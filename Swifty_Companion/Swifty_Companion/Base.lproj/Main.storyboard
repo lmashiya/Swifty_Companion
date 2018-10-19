@@ -66,7 +66,7 @@
         <!--Profile Screen-->
         <scene sceneID="uSd-jC-zG9">
             <objects>
-                <viewController id="TCV-MP-0Rk" sceneMemberID="viewController">
+                <viewController id="TCV-MP-0Rk" customClass="UserResultViewController" customModule="Swifty_Companion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hIk-1G-hqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,6 @@
         <!--Navigation Controller-->
         <scene sceneID="cvI-re-dzQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="scf-0z-Agx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BWP-O4-EJC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JOA-ic-Nqi">
@@ -161,6 +160,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="b2t-ly-ghX"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scf-0z-Agx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>

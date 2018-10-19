@@ -21,6 +21,8 @@ class TokenGetter: NSObject {
     
     var userName = ""
     
+    let Data = userData()
+    
     
     //Mark : Get Token for sending request
     func    getToken() {
@@ -42,7 +44,7 @@ class TokenGetter: NSObject {
             
             }
         }
-    
+
     //Mark : Get Info about User
     func    getInfo(token : String) {
         let headers: HTTPHeaders = [
@@ -56,9 +58,11 @@ class TokenGetter: NSObject {
             {
             case .success :
                 let tokenRes : JSON = JSON(response.result.value!)
+                print("Here we go now")
                 print(tokenRes.dictionary!)
                 self.requestParams = self.requestUrl + self.userName
                 self.getInfo(token: tokenRes["access_token"].stringValue)
+                self.setParams(tokenRes)
             
             case .failure(let error) :
                 print(error)
@@ -67,6 +71,36 @@ class TokenGetter: NSObject {
                 
             }
         }
+    
+    func setParams(_ tokenRes: JSON)
+    {
+        if tokenRes["displayname"] != JSON.null {
+            setUserInfo(tokenRes)
+        }
+        else
+        {
+            print(Error.self)
+        }
+    }
+    
+    func setUserInfo(_ tokenRes : JSON)
+    {
+        self.Data.nameSurname = tokenRes["displayname"].stringValue
+        self.Data.number = tokenRes["phone"].stringValue
+        self.Data.points = tokenRes["correction_point"].stringValue
+        self.Data.userName = tokenRes["login"].stringValue
+        self.Data.email = tokenRes["email"].stringValue
+        self.Data.wallet = tokenRes["wallet"].stringValue
+        self.Data.place = tokenRes["location"].stringValue
+        self.Data.image = tokenRes["image_url"].stringValue
+        
+        let url = URL(string : Data.image)
+        let dataRecieved = NSData(contentsOf: url! as URL)
+        //self.Data.showImage = UIImage(data: dataRecieved! as Data)
+        
+        
+        
+    }
 }
     
     

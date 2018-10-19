@@ -12,6 +12,8 @@ import  Alamofire
 class ViewController: UIViewController {
 
     var tokeniser = TokenGetter()
+    var data = userData()
+    var userResultsVC = UserResultViewController()
     
     @IBAction func searcher(_ sender: Any) {
         tokeniser.userName = textField.text!
@@ -37,7 +39,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueIdentifier"
         {
-            print("Clicked Segue")
+            let resultsView = segue.destination as! UserResultViewController
+            resultsView.title = tokeniser.userName
+//            UserResultViewController.data = self.data
+            self.userResultsVC.data = self.data
         }
     }
 }
